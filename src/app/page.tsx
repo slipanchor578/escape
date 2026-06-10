@@ -1,11 +1,9 @@
 export default function Index() {
   return (
     <>
-      <h1 className="section-title">Latest Articles</h1>
-
       {/* Post Card 1 */}
       <article className="post-card">
-        <div className="post-image" style={{ backgroundColor: "#ddd" }}></div>
+        {/* <div className="post-image" style={{ backgroundColor: "#ddd" }}></div> */}
         <div className="post-content">
           <span className="post-category">Technology</span>
           <h2>
@@ -24,7 +22,7 @@ export default function Index() {
 
       {/* Post Card 2 */}
       <article className="post-card">
-        <div className="post-image" style={{ backgroundColor: "#ddd" }}></div>
+        {/* <div className="post-image" style={{ backgroundColor: "#ddd" }}></div> */}
         <div className="post-content">
           <span className="post-category">Design</span>
           <h2>
