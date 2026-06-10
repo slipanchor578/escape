@@ -1,14 +1,17 @@
-import Link from "next/link";
-
-const Header = () => {
-  return (
-    <h2 className="text-2xl md:text-4xl font-bold tracking-tight md:tracking-tighter leading-tight mb-20 mt-8 flex items-center">
-      <Link href="/" className="hover:underline">
-        Blog
-      </Link>
-      .
-    </h2>
-  );
-};
-
-export default Header;
+export default function Header() {
+    return (
+        <header className="blog-header">
+          <div className="container header-flex">
+            <a href="#" className="logo">
+              My<span>Blog</span>
+            </a>
+            <nav className="nav-links">
+              <a href="#">Home</a>
+              <a href="#">Article</a>
+              <a href="#">About</a>
+              <a href="#">Contact</a>
+            </nav>
+          </div>
+        </header>
+    )
+}

@@ -1,0 +1,27 @@
+---
+title: sample_static_blog
+layout: base.liquid
+eleventyExcludeFromCollections: true
+pagination:
+  data: collections.postsNewestFirst
+  size: 5
+  alias: posts
+permalink: "{% if pagination.pageNumber > 0 %}page/{{ pagination.pageNumber }}/index.html{% else %}index.html{% endif %}"
+---
+{% for post in posts %}
+  <article class="post">
+    <h1>
+      <a href="{{ post.url }}">{{ post.data.title }}</a>
+    </h1>
+    {{ post.content | truncate: 200 }}
+  </article>
+{% endfor %}
+<nav class="pager">
+  {% if pagination.href.previous %}
+    <a href="{{ pagination.href.previous }}">← 前のページ</a>
+  {% endif %}
+
+  {% if pagination.href.next %}
+    <a href="{{ pagination.href.next }}">次のページ →</a>
+  {% endif %}
+</nav>
