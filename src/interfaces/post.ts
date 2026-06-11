@@ -1,5 +1,4 @@
 // ここで記事の型を作る
-
 export type Post = {
   title: string;
   date: string;

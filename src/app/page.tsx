@@ -1,4 +1,4 @@
-import { getAllPosts } from "@/lib/api";
+import { getAllPosts, truncateUnicode } from "@/lib/api";
 import Link from "next/link";
 export default async function Index() {
   const posts = await getAllPosts();
@@ -13,7 +13,7 @@ export default async function Index() {
               <Link href={`/posts/${post.slug}`}>{post.title}</Link>
             </h2>
             <p className="post-meta">Published on {post.date}</p>
-            <p className="post-excerpt">{post.content.slice(0, 120)} ...</p>
+            <p className="post-excerpt">{truncateUnicode(post.content, 120)}</p>
             <Link href={`/posts/${post.slug}`} className="read-more">
               Read More →
             </Link>

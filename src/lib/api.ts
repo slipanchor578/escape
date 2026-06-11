@@ -45,3 +45,9 @@ export async function getAllPosts(): Promise<Post[]> {
 // の場合post1の方が文字列的に大きいので-1を返す
 // 結果、post2より先に来るので、降順(新しい記事順)に並ぶ
 // ただの文字列だが、ISO-8601形式なので結果的に日付で並び替えることができる
+
+export function truncateUnicode(str: string, maxLength: number) {
+  const chars = [...str];
+  if (chars.length <= maxLength) return str;
+  return chars.slice(0, maxLength).join("") + " ...";
+}
