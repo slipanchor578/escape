@@ -15,7 +15,7 @@ export default async function Index() {
             <p className="post-meta">Published on {post.date}</p>
             <p className="post-excerpt">{truncateUnicode(post.content, 120)}</p>
             <Link href={`/posts/${post.slug}`} className="read-more">
-              Read More →
+              Read More
             </Link>
           </div>
         </article>

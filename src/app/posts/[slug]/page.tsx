@@ -1,6 +1,6 @@
 import { getAllPosts, getPostBySlug } from "@/lib/api";
 import markdownToHtml from "@/lib/markdownToHtml";
-
+import Link from "next/link";
 type Params = Promise<{ slug: string }>;
 
 // この時点では各記事ごととなるので配列ではなく
@@ -17,9 +17,9 @@ export default async function PostPage({ params }: { params: Params }) {
         {/* カテゴリ・タグ一覧 */}
         <div className="post-tags">
           {post.tags?.map((tag) => (
-            <span key={tag} className="post-category">
+            <Link className="post-category" key={tag} href={`/tags/${tag}`}>
               {tag}
-            </span>
+            </Link>
           ))}
         </div>
         {/* 記事タイトル */}
