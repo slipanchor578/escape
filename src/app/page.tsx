@@ -5,43 +5,39 @@ export default async function Index() {
   const latest5 = posts.slice(0, 5);
   return (
     <>
-      {/* Post Card 1 */}
-      <article className="post-card">
-        {/* <div className="post-image" style={{ backgroundColor: "#ddd" }}></div> */}
-        <div className="post-content">
-          <span className="post-category">Technology</span>
-          <h2>
-            <a href="#">Getting Started with Static Site Generators</a>
-          </h2>
-          <p className="post-meta">Published on June 9, 2026 by Admin</p>
-          <p className="post-excerpt">
-            Static websites are fast, secure, and incredibly easy to host. Learn
-            how to convert your layout into production-ready files.
-          </p>
-          <a href="#" className="read-more">
-            Read More &rarr;
-          </a>
-        </div>
-      </article>
-
-      {/* Post Card 2 */}
-      <article className="post-card">
-        {/* <div className="post-image" style={{ backgroundColor: "#ddd" }}></div> */}
-        <div className="post-content">
-          <span className="post-category">Design</span>
-          <h2>
-            <a href="#">Mastering CSS Grid and Flexbox Layouts</a>
-          </h2>
-          <p className="post-meta">Published on June 5, 2026 by Jane Doe</p>
-          <p className="post-excerpt">
-            Discover how modern CSS layout modules make building responsive,
-            multi-column website layouts easier than ever before.
-          </p>
-          <a href="#" className="read-more">
-            Read More &rarr;
-          </a>
-        </div>
-      </article>
+      {/* Post Card */}
+      {latest5.map((post) => (
+        <article className="post-card" key={post.slug}>
+          <div className="post-content">
+            <h2>
+              <Link href={`/posts/${post.slug}`}>{post.title}</Link>
+            </h2>
+            <p className="post-meta">Published on {post.date}</p>
+            <p className="post-excerpt">{post.content.slice(0, 120)} ...</p>
+            <Link href={`/posts/${post.slug}`} className="read-more">
+              Read More →
+            </Link>
+          </div>
+        </article>
+      ))}
     </>
   );
 }
+
+/*
+  {post.date instanceof Date
+                ? post.date.toLocaleDateString("ja-JP")
+                : String(post.date)}
+
+  *.md が
+  ---
+  date: 2000-01-01
+  ---
+  のようだったとして、普通に{post.date} みたいにして文字列のように使うと、勝手にDate型にしてしまう
+  これはmatterライブラリが気を利かせてISO 8601 -> Date型に変換しているから勝手に
+  この時Reactは当たり前だが文字列のところにDate型を当てはめられないのでエラーを出す
+  そこでDate型なら地域に合わせた文字列時間に変換すれば上手くレンダリングされる
+  そもそも
+  date: "2000-01-01"
+  のように文字列で指定しておけば、強制的に変換しないらしい
+*/

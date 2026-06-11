@@ -1,15 +1,16 @@
+import Link from "next/link";
 export default function Header() {
   return (
     <header className="blog-header">
       <div className="container header-flex">
-        <a href="#" className="logo">
+        <Link href="/" className="logo">
           My<span>Blog</span>
-        </a>
+        </Link>
         <nav className="nav-links">
-          <a href="#">Home</a>
-          <a href="#">Article</a>
-          <a href="#">About</a>
-          <a href="#">Contact</a>
+          <Link href="/">Home</Link>
+          <Link href="#">Article</Link>
+          <Link href="#">About</Link>
+          <Link href="#">Contact</Link>
         </nav>
       </div>
     </header>

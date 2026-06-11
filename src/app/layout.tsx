@@ -1,6 +1,5 @@
 import React from "react";
 import Header from "./_components/header";
-import SideBar from "./_components/sidebar";
 import Footer from "./_components/footer";
 // import "./globals.css";
 import "./sample.css";
@@ -19,13 +18,8 @@ export default function RootLayout({
         <Header />
         {/* Main Container */}
         <div className="container blog-layout">
-          <main className="blog-main">
-            <h1 className="section-title">Latest Articles</h1>
-            {children}
-          </main>
-          <SideBar />
+          <main className="blog-main">{children}</main>
         </div>
-
         {/* Footer */}
         <Footer />
       </body>
