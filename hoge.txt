@@ -1,0 +1,26 @@
+/src/app/
+=> 記事のうち最新の5つをPost Card として生成する
+span.post-category は記事のtagsの数だけ生成する
+h2 > a の内容は記事のtitle
+p.post-meta = 記事のdate
+p.post-excerpt = 記事のrawcontentをtruncateしたものを入れる
+a.read-moreには記事のurlを入れる
+
+{/* Post Card 1 */}
+      <article className="post-card">
+        {/* <div className="post-image" style={{ backgroundColor: "#ddd" }}></div> */}
+        <div className="post-content">
+          <span className="post-category">Technology</span>
+          <h2>
+            <a href="#">Getting Started with Static Site Generators</a>
+          </h2>
+          <p className="post-meta">Published on June 9, 2026 by Admin</p>
+          <p className="post-excerpt">
+            Static websites are fast, secure, and incredibly easy to host. Learn
+            how to convert your layout into production-ready files.
+          </p>
+          <a href="#" className="read-more">
+            Read More &rarr;
+          </a>
+        </div>
+      </article>

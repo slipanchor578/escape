@@ -1,6 +1,6 @@
 // 事前にfront matter を含めたmdの形式をtypeで作っておく。
 import { Post } from "@/interfaces/post";
-import fs from "fs";
+import { readdir, readFile } from "fs/promises";
 import matter from "gray-matter";
 import { join } from "path";
 
@@ -8,17 +8,17 @@ import { join } from "path";
 const postsDirectory = join(process.cwd(), "_posts");
 
 // _posts内の記事のファイル名配列が返る。[ 'dynamic-routing.md', 'hello-world.md', 'preview.md' ]
-export function getPostSlugs() {
-  return fs.readdirSync(postsDirectory);
+export async function getPostSlugs() {
+  return readdir(postsDirectory);
 }
 
-export function getPostBySlug(slug: string) {
+export async function getPostBySlug(slug: string) {
   // ファイル名から.mdが取られる
   const realSlug = slug.replace(/\.md$/, "");
   // /home/nakai288/prac/blog2/_posts/dynamic-routing.md こういうのができる
   const fullPath = join(postsDirectory, `${realSlug}.md`);
   // ファイルを文字列として読み込む。この時点ではまだ.md => html 化していない。「## Lorem Ipsum」みたいな感じでそのまま
-  const fileContents = fs.readFileSync(fullPath, "utf8");
+  const fileContents = await readFile(fullPath, "utf8");
   // dataにはハッシュでfront matter の内容が入る
   // data.title = "Dynamic Routing and Static Generation" みたいな
   // data.author.name = "JJ Kasper" みたいにネストされる
@@ -31,15 +31,12 @@ export function getPostBySlug(slug: string) {
   return { ...data, slug: realSlug, content } as Post;
 }
 
-export function getAllPosts(): Post[] {
+export async function getAllPosts(): Promise<Post[]> {
   // 拡張子を取った記事ファイル名を全取得
-  const slugs = getPostSlugs();
+  const slugs = await getPostSlugs();
   // ここで記事オブジェクトを生成
-  const posts = slugs
-    .map((slug) => getPostBySlug(slug))
-    // sort posts by date in descending order
-    .sort((post1, post2) => (post1.date > post2.date ? -1 : 1));
-  return posts;
+  const posts = await Promise.all(slugs.map((slug) => getPostBySlug(slug)));
+  return posts.sort((a, b) => a.date > b.date ? -1 : 1);
   // 日付の新しい記事順に並び替えた記事配列を返す
 }
 // 例えば

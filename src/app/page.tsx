@@ -1,4 +1,8 @@
-export default function Index() {
+import { getAllPosts } from "@/lib/api";
+import Link from "next/link";
+export default async function Index() {
+  const posts = await getAllPosts();
+  const latest5 = posts.slice(0, 5);
   return (
     <>
       {/* Post Card 1 */}

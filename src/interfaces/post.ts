@@ -17,9 +17,10 @@
 // ここで記事の型を作る
 
 export type Post = {
-  slug: string;
   title: string;
   date: string;
   description: string;
+  tags: string[];
+  slug: string;
   content: string;
 };
