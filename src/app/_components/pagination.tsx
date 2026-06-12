@@ -6,27 +6,18 @@ type Params = {
 };
 
 export default function Pagination({ currentPage, totalPage }: Params) {
-  const prevButton =
-    currentPage > 1 ? (
-      <Link href={`/page/${currentPage - 1}`}>前へ</Link>
-    ) : (
-      <span>前へ</span>
-    );
-
-  const nextButton =
-    currentPage < totalPage ? (
-      <Link href={`/page/${currentPage + 1}`}>次へ</Link>
-    ) : (
-      <span>次へ</span>
-    );
+  const showPrev = currentPage > 1;
+  const showNext = currentPage < totalPage;
+  const prevHref = currentPage === 2 ? "/" : `/page/${currentPage - 1}`;
+  const nextHref = `/page/${currentPage + 1}`;
 
   return (
     <div className="pagination">
-      {prevButton}
+      {showPrev && <Link href={prevHref}>前へ</Link>}
       <span>
         {currentPage} / {totalPage}
       </span>
-      {nextButton}
+      {showNext && <Link href={nextHref}>次へ</Link>}
     </div>
   );
 }

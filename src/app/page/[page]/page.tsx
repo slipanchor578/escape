@@ -51,6 +51,6 @@ export async function generateStaticParams() {
   // Array.from にlengthプロパティを持つオブジェクトを渡すと、その数値の長さの配列を作る
   // この時点ではundefined要素の長さ6の配列、valueは捨てて、インデックス = 長さだけ使う
   return Array.from({ length: totalPages }).map((_, i) => ({
-    page: String(i + 1),
+    page: String(i + 2),
   }));
 }
