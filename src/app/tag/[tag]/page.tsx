@@ -1,4 +1,5 @@
 import { getAllPosts } from "@/lib/api";
+import { Post } from "@/interfaces/post";
 import Link from "next/link";
 type Params = Promise<{ tag: string }>;
 
@@ -6,33 +7,39 @@ export default async function TagPage({ params }: { params: Params }) {
   const { tag } = await params;
   const posts = (await getAllPosts()).filter((p) => p.tags.includes(tag));
 
+  const groups: Record<string, Post[]> = {};
+
+  posts.forEach((post) => {
+    const d = new Date(post.date);
+    const ym = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}`;
+
+    if (!groups[ym]) groups[ym] = [];
+    groups[ym].push(post);
+  });
+
+  const sortedKeys = Object.keys(groups).sort().reverse();
+
   return (
-    // <main>
-    //   <h1 className="tag-title">#{tag}</h1>
-    //   <div className="tag-list">
-    //     {posts.map((post) => (
-    //       <article key={post.slug} className="tag-post">
-    //         <p className="date">{post.date}</p>
-    //         <h2>
-    //           <a href={`/posts/${post.slug}`}>{post.title}</a>
-    //         </h2>
-    //       </article>
-    //     ))}
-    //   </div>
-    // </main>
     <article className="post-card">
       <div className="post-content">
         <h2>#{tag}</h2>
-        <ul>
-          {posts.map((post) => (
-            <li key={post.slug}>
-              <p>{post.date}</p>
-              <h2>
-                <Link href={`/post/${post.slug}`}>{post.title}</Link>
-              </h2>
-            </li>
-          ))}
-        </ul>
+        {sortedKeys.map((ym) => {
+          const [year, month] = ym.split("-");
+          return (
+            <section key={ym} className="toc-section">
+              <h3>
+                {year}年{month}月
+              </h3>
+              <ul>
+                {groups[ym].map((post) => (
+                  <li key={post.slug}>
+                    <Link href={`/post/${post.slug}`}>{post.title}</Link>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          );
+        })}
       </div>
     </article>
   );
@@ -40,6 +47,9 @@ export default async function TagPage({ params }: { params: Params }) {
 
 export async function generateStaticParams() {
   const posts = await getAllPosts();
+  // flatMapで各記事のtagを全部取って詰めた配列を作る
+  // [a,a,a,a,b,b,c,c,c,c,c,]
+  // みたいな。そしてSetで重複を除いて[a,b,c] となる
   const tags = Array.from(new Set(posts.flatMap((p) => p.tags)));
   return tags.map((tag) => ({
     tag,

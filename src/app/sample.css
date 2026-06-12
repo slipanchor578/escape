@@ -104,6 +104,64 @@ a {
     padding: 24px;
 }
 
+/* /tag */
+.post-content ul {
+    display: flex;
+    flex-wrap: wrap; /* タグが増えたら折り返す */
+    gap: 8px 12px;  /* 横・縦の間隔 */
+    padding: 0;
+    margin: 20px 0 0;
+    list-style: none;
+}
+
+.post-content li a {
+    padding: 2px 8px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.post-content li a:hover {
+    color: var(--primary-color);    
+}
+
+/* /tag/[tag] */
+.toc-section {
+    margin-top: 32px;
+}
+
+.toc-section h3 {
+    font-size: 20px;
+    margin-bottom: 12px;
+    color: #333;
+}
+
+.toc-section ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 12px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.toc-section li {
+    margin: 4px 0;
+}
+
+.toc-section li a {
+    padding: 0;
+    background: none;
+    border-radius: 0;
+    font-weight: 400;
+    font-size: 18px;
+    color: #1e40af;
+    text-decoration: none;
+}
+
+.toc-section li a:hover {
+    text-decoration: underline;
+}
+
 .post-content h2 {
     font-size: 24px;
     margin-bottom: 10px;
@@ -221,6 +279,29 @@ a {
 /* 本文内の強調文字 */
 .post-body strong {
     color: #0f172a;
+    font-weight: 700;
+}
+
+/* Pagination */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.pagination a {
+    padding: 4px 10px;
+    border-radius: 4px;
+    background: #f0f0f0;
+}
+
+.pagination a:hover {
+    color: var(--primary-color);    
+}
+
+.pagination span {
     font-weight: 700;
 }
 
