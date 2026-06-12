@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { getAllPosts } from "@/lib/api";
 
-export default async function TagsIndexPage() {
+export default async function TagIndexPage() {
   const posts = await getAllPosts();
 
   const tagCount: Record<string, number> = {};
@@ -16,11 +16,11 @@ export default async function TagsIndexPage() {
 
   return (
     <main>
-      <h1>Tags</h1>
+      <h1>Tag</h1>
       <ul>
         {tags.map(([tag, count]) => (
           <li key={tag}>
-            <Link href={`/tags/${tag}`}>
+            <Link href={`/tag/${tag}`}>
               {tag} ({count})
             </Link>
           </li>

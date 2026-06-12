@@ -1,7 +1,7 @@
 import { getAllPosts } from "@/lib/api";
 type Params = Promise<{ tag: string }>;
 
-export default async function TagsPage({ params }: { params: Params }) {
+export default async function TagPage({ params }: { params: Params }) {
   const { tag } = await params;
   const posts = (await getAllPosts()).filter((p) => p.tags.includes(tag));
 

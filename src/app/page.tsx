@@ -1,28 +1,34 @@
-import { getAllPosts, truncateUnicode } from "@/lib/api";
-import Link from "next/link";
-export default async function Index() {
-  const posts = await getAllPosts();
-  const latest5 = posts.slice(0, 5);
-  return (
-    <>
-      {/* Post Card */}
-      {latest5.map((post) => (
-        <article className="post-card" key={post.slug}>
-          <div className="post-content">
-            <h2>
-              <Link href={`/posts/${post.slug}`}>{post.title}</Link>
-            </h2>
-            <p className="post-meta">Published on {post.date}</p>
-            <p className="post-excerpt">{truncateUnicode(post.content, 120)}</p>
-            <Link href={`/posts/${post.slug}`} className="read-more">
-              Read More
-            </Link>
-          </div>
-        </article>
-      ))}
-    </>
-  );
+import { redirect } from "next/navigation";
+
+export default function Index() {
+  redirect("/page/1");
 }
+
+// import { getAllPosts, truncateUnicode } from "@/lib/api";
+// import Link from "next/link";
+// export default async function Index() {
+//   const posts = await getAllPosts();
+//   const latest5 = posts.slice(0, 5);
+//   return (
+//     <>
+//       {/* Post Card */}
+//       {latest5.map((post) => (
+//         <article className="post-card" key={post.slug}>
+//           <div className="post-content">
+//             <h2>
+//               <Link href={`/post/${post.slug}`}>{post.title}</Link>
+//             </h2>
+//             <p className="post-meta">Published on {post.date}</p>
+//             <p className="post-excerpt">{truncateUnicode(post.content, 120)}</p>
+//             <Link href={`/post/${post.slug}`} className="read-more">
+//               Read More
+//             </Link>
+//           </div>
+//         </article>
+//       ))}
+//     </>
+//   );
+// }
 
 /*
   {post.date instanceof Date
