@@ -6,6 +6,7 @@
     "start": "next start",
     "clean": "rm -rf .next"
   },
+  "type": "module",
   "dependencies": {
     "classnames": "^2.5.1",
     "date-fns": "^3.6.0",

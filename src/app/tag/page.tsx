@@ -15,17 +15,19 @@ export default async function TagIndexPage() {
   const tags = Object.entries(tagCount);
 
   return (
-    <main>
-      <h1>Tag</h1>
-      <ul>
-        {tags.map(([tag, count]) => (
-          <li key={tag}>
-            <Link href={`/tag/${tag}`}>
-              {tag} ({count})
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </main>
+    <article className="post-card">
+      <div className="post-content">
+        <h2>Tag</h2>
+        <ul>
+          {tags.map(([tag, count]) => (
+            <li key={tag}>
+              <Link href={`/tag/${tag}`}>
+                {tag} ({count})
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </article>
   );
 }
