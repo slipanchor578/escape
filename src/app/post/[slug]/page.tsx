@@ -17,8 +17,8 @@ export default async function PostPage({ params }: { params: Params }) {
         {/* カテゴリ・タグ一覧 */}
         <div className="post-tags">
           {post.tags?.map((tag) => (
-            <Link className="post-category" key={tag} href={`/tags/${tag}`}>
-              {tag}
+            <Link className="post-category" key={tag} href={`/tag/${tag}`}>
+              #{tag}
             </Link>
           ))}
         </div>
