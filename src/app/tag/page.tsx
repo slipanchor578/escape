@@ -1,11 +1,9 @@
 import Link from "next/link";
-import { getAllPosts } from "@/lib/api";
+import { allPosts } from "@/lib/allPosts";
 
-export default async function TagIndexPage() {
-  const posts = await getAllPosts();
-
+export default async function Page() {
   const tagCount: Record<string, number> = {};
-  posts.forEach((post) => {
+  allPosts.forEach((post) => {
     post.tags?.forEach((tag: string) => {
       tagCount[tag] = (tagCount[tag] || 0) + 1;
     });

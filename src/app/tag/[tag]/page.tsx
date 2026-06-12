@@ -1,11 +1,11 @@
-import { getAllPosts } from "@/lib/api";
+import { allPosts } from "@/lib/allPosts";
 import { Post } from "@/interfaces/post";
 import Link from "next/link";
 type Params = Promise<{ tag: string }>;
 
-export default async function TagPage({ params }: { params: Params }) {
+export default async function Page({ params }: { params: Params }) {
   const { tag } = await params;
-  const posts = (await getAllPosts()).filter((p) => p.tags.includes(tag));
+  const posts = allPosts.filter((p) => p.tags.includes(tag));
 
   const groups: Record<string, Post[]> = {};
 
@@ -46,11 +46,10 @@ export default async function TagPage({ params }: { params: Params }) {
 }
 
 export async function generateStaticParams() {
-  const posts = await getAllPosts();
   // flatMapで各記事のtagを全部取って詰めた配列を作る
   // [a,a,a,a,b,b,c,c,c,c,c,]
   // みたいな。そしてSetで重複を除いて[a,b,c] となる
-  const tags = Array.from(new Set(posts.flatMap((p) => p.tags)));
+  const tags = Array.from(new Set(allPosts.flatMap((p) => p.tags)));
   return tags.map((tag) => ({
     tag,
   }));

@@ -1,13 +1,14 @@
-import { getAllPosts, getPostBySlug } from "@/lib/api";
+import { getPostBySlug } from "@/lib/api";
+import { allPosts } from "@/lib/allPosts";
 import markdownToHtml from "@/lib/markdownToHtml";
 import Link from "next/link";
 type Params = Promise<{ slug: string }>;
 
 // この時点では各記事ごととなるので配列ではなく
 // { params: Promise<{slug: string}>} という型で渡される
-export default async function PostPage({ params }: { params: Params }) {
+export default async function Page({ params }: { params: Params }) {
   const { slug } = await params;
-  const post = await getPostBySlug(slug);
+  const post = allPosts.find((post) => post.slug === slug)!;
   const content = await markdownToHtml(post.content || "");
 
   return (
@@ -40,9 +41,7 @@ export default async function PostPage({ params }: { params: Params }) {
 
 // この時点ではPromise<{ slug: string }[]>
 export async function generateStaticParams() {
-  const posts = await getAllPosts();
-
-  return posts.map((post) => ({
+  return allPosts.map((post) => ({
     slug: post.slug,
   }));
 }

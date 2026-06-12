@@ -1,17 +1,17 @@
-import { getAllPosts, truncateUnicode } from "@/lib/api";
+import { truncateUnicode } from "@/lib/api";
+import { allPosts } from "@/lib/allPosts";
 import Link from "next/link";
 import Pagination from "./_components/pagination";
 
-export default async function Index() {
+export default async function Page() {
   const page = 1;
   const perPage = 5;
 
-  const posts = await getAllPosts();
-  const totalPage = Math.ceil(posts.length / perPage);
+  const totalPage = Math.ceil(allPosts.length / perPage);
 
   const start = (page - 1) * perPage;
   const end = start + perPage;
-  const pagePosts = posts.slice(start, end);
+  const pagePosts = allPosts.slice(start, end);
 
   return (
     <>

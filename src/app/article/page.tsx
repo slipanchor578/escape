@@ -1,12 +1,11 @@
-import { getAllPosts } from "@/lib/api";
+import { allPosts } from "@/lib/allPosts";
 import { Post } from "@/interfaces/post";
 import Link from "next/link";
 
 export default async function Page() {
-  const posts = await getAllPosts();
   const groups: Record<string, Post[]> = {};
 
-  posts.forEach((post) => {
+  allPosts.forEach((post) => {
     const d = new Date(post.date);
     const ym = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}`;
 

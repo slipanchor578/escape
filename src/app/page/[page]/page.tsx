@@ -1,4 +1,5 @@
-import { getAllPosts, truncateUnicode } from "@/lib/api";
+import { truncateUnicode } from "@/lib/api";
+import { allPosts } from "@/lib/allPosts";
 import Link from "next/link";
 import Pagination from "@/app/_components/pagination";
 
@@ -9,9 +10,8 @@ export default async function Page({ params }: { params: Params }) {
   const numPage = Number(page);
   const perPage = 5;
 
-  const posts = await getAllPosts();
   // 合計記事26, 掲載数5の場合 = 5.2 => 6 となる。5ページだと1記事余るので、切り上げて6ページになる
-  const totalPage = Math.ceil(posts.length / perPage);
+  const totalPage = Math.ceil(allPosts.length / perPage);
 
   // 0:5, 5:10, 10:15 みたいな感じ
   const start = (numPage - 1) * perPage;
@@ -19,7 +19,7 @@ export default async function Page({ params }: { params: Params }) {
   // たとえば0:5 ならposts[0-4]の5記事となる
   // 5:10 ならposts[5-9]の5記事となる
   // 6ページ目の25:30 ならposts[25-29]で、1記事しか残っていないので1記事だけ取り出す
-  const pagePosts = posts.slice(start, end);
+  const pagePosts = allPosts.slice(start, end);
 
   return (
     <>
@@ -44,9 +44,8 @@ export default async function Page({ params }: { params: Params }) {
 }
 
 export async function generateStaticParams() {
-  const posts = await getAllPosts();
   const perPage = 5;
-  const totalPages = Math.ceil(posts.length / perPage);
+  const totalPages = Math.ceil(allPosts.length / perPage);
 
   // Array.from にlengthプロパティを持つオブジェクトを渡すと、その数値の長さの配列を作る
   // この時点ではundefined要素の長さ6の配列、valueは捨てて、インデックス = 長さだけ使う
