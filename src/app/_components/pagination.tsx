@@ -13,11 +13,11 @@ export default function Pagination({ currentPage, totalPage }: Params) {
 
   return (
     <div className="pagination">
-      {showPrev && <Link href={prevHref}>前へ</Link>}
+      {showPrev && <Link href={prevHref}>Prev</Link>}
       <span>
         {currentPage} / {totalPage}
       </span>
-      {showNext && <Link href={nextHref}>次へ</Link>}
+      {showNext && <Link href={nextHref}>Next</Link>}
     </div>
   );
 }
