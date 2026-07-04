@@ -1,11 +1,11 @@
-import React from "react";
-import Header from "./_components/header";
-import Footer from "./_components/footer";
-// import "./globals.css";
-import "./sample.css";
+import React from 'react';
+import Header from './_components/header';
+import Footer from './_components/footer';
+// import './globals.css';
+import './sample.css';
 
 export const metadata = {
-  title: "MyBlog",
+  title: 'MyBlog',
 };
 
 export default function RootLayout({
@@ -17,7 +17,7 @@ export default function RootLayout({
         {/* Header */}
         <Header />
         {/* Main Container */}
-        <div className="container blog-layout">
+        <div className="blog-layout container">
           <main className="blog-main">{children}</main>
         </div>
         {/* Footer */}
