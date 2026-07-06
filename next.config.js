@@ -5,6 +5,7 @@ const nextConfig = {
   images: {
     unoptimized: true
   },
+  allowedDevOrigins: process.env.NEXTALLOWEDDEV_ORIGINS?.split(',') || [],
 }
 
 export default nextConfig;
