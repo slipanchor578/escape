@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from './_components/header';
 import Footer from './_components/footer';
-// import './globals.css';
+import './globals.css';
 import './sample.css';
 
 export const metadata = {
