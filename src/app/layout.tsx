@@ -1,8 +1,8 @@
 import React from 'react';
-import Header from './_components/Header';
-import Footer from './_components/Footer';
+import Container from "../components/container";
+import Header from './_components/header';
+import Footer from './_components/footer';
 import './globals.css';
-// import './sample.css';
 
 export const metadata = {
   title: 'MyBlog',
@@ -17,9 +17,11 @@ export default function RootLayout({
         {/* Header */}
         <Header />
         {/* Main Container */}
-        <div className="blog-layout container">
-          <main className="blog-main">{children}</main>
-        </div>
+        <Container>
+          <div className="max-w-[900px] mx-auto py-10">
+            <main>{children}</main>
+          </div>
+        </Container>
         {/* Footer */}
         <Footer />
       </body>

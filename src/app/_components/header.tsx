@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Container from "../../components/Container";
+import Container from "../../components/container";
 export default function Header() {
   return (
     <header className="bg-white border-b border-(--border-color) sticky top-0 z-100">
