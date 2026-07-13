@@ -28,14 +28,6 @@ a {
 
 /* Layout Utilities */
 .container {
-    /*
-        ページ中央に揃えるためのラッパー
-        中央寄せにして、最大幅を制限して、内側に余白を入れて端にくっつかないようにする
-        widthを100%にすると、親要素にサイズが追従する
-        ただしmax-widthを指定しているので、とりあえず伸びた後にmax-widthのサイズになる
-        中央寄せするにはwidthが必要。flexコンテナの子要素はサイズが伸縮するので、その中でcontainerを
-        使うならwidth: auto だと動きが不安定になるらしい
-    */
     width: 100%;
     max-width: var(--max-width);
     margin: 0 auto;

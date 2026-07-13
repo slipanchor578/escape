@@ -14,4 +14,7 @@
 /* 3. ダークモードの追加設定 */
 @theme {
   --variant-dark: .dark &;
+  --max-width: 1140px;
+  --border-color: #e2e8f0;
+  --primary-color: #2563eb;
 }

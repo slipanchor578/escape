@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from './_components/header';
+import Header from './_components/Header';
 import Footer from './_components/footer';
 import './globals.css';
 // import './sample.css';
