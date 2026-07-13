@@ -6,6 +6,7 @@
 /* 2. Tailwind を適用したい特定の path を指定 */
 @source "./page.tsx";
 @source "./layout.tsx";
+@source "./_components/**/*.{js,ts,jsx,tsx,mdx}";
 @source "./article/**/*.{js,ts,jsx,tsx,mdx}";
 @source "./page/**/*.{js,ts,jsx,tsx,mdx}";
 @source "./post/**/*.{js,ts,jsx,tsx,mdx}";
@@ -17,4 +18,5 @@
   --max-width: 1140px;
   --border-color: #e2e8f0;
   --primary-color: #2563eb;
+  --footer-color: #64748b;
 }
