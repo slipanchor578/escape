@@ -1,7 +1,6 @@
-import { truncateUnicode } from "@/lib/api";
-import { allPosts } from "@/lib/allPosts";
-import Link from "next/link";
-import Pagination from "@/app/_components/pagination";
+import { allPosts } from '@/lib/allPosts';
+import PostCard from '@/components/postcard';
+import Pagination from '@/app/_components/pagination';
 
 type Params = Promise<{ page: string }>;
 
@@ -24,18 +23,7 @@ export default async function Page({ params }: { params: Params }) {
   return (
     <>
       {pagePosts.map((post) => (
-        <article className="post-card" key={post.slug}>
-          <div className="post-content">
-            <h2>
-              <Link href={`/post/${post.slug}`}>{post.title}</Link>
-            </h2>
-            <p className="post-meta">Published on {post.date}</p>
-            <p className="post-excerpt">{truncateUnicode(post.content, 120)}</p>
-            <Link href={`/post/${post.slug}`} className="read-more">
-              Read More
-            </Link>
-          </div>
-        </article>
+        <PostCard key={post.slug} post={post} />
       ))}
 
       <Pagination currentPage={numPage} totalPage={totalPage} />
