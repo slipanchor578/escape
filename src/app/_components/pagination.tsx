@@ -1,4 +1,4 @@
-import Link from "next/link";
+import PaginationLink from '@/components/paginationlink'; 
 
 type Params = {
   currentPage: number;
@@ -12,12 +12,12 @@ export default function Pagination({ currentPage, totalPage }: Params) {
   const nextHref = `/page/${currentPage + 1}`;
 
   return (
-    <div className="pagination">
-      {showPrev && <Link href={prevHref}>Prev</Link>}
-      <span>
+    <div className="flex justify-center items-center gap-2.5 mt-5">
+      {showPrev && <PaginationLink href={prevHref}>Prev</PaginationLink>}
+      <span className="font-bold">
         {currentPage} / {totalPage}
       </span>
-      {showNext && <Link href={nextHref}>Next</Link>}
+      {showNext && <PaginationLink href={nextHref}>Next</PaginationLink>}
     </div>
   );
 }

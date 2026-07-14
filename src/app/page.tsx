@@ -1,8 +1,9 @@
-import PostCard from "../components/postcard";
-import { truncateUnicode } from "@/lib/api";
-import { allPosts } from "@/lib/allPosts";
-import Link from "next/link";
-import Pagination from "./_components/pagination";
+import { truncateUnicode } from '@/lib/api';
+import { allPosts } from '@/lib/allPosts';
+
+import Link from 'next/link';
+import Pagination from '@/app/_components/pagination';
+import PostCard from '@/components/postcard';
 
 export default async function Page() {
   const page = 1;
