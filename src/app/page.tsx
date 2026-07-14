@@ -1,3 +1,4 @@
+import PostCard from "../components/postcard";
 import { truncateUnicode } from "@/lib/api";
 import { allPosts } from "@/lib/allPosts";
 import Link from "next/link";
@@ -16,7 +17,7 @@ export default async function Page() {
   return (
     <>
       {pagePosts.map((post) => (
-        <article className="bg-white rounded-lg overflow-hidden shadow-[0_4px_6px_-1px_rgba(0,0,0,0.05)] mb-7.5 border-b border-(--border-color)" key={post.slug}>
+        <PostCard key={post.slug}>
           <div className="p-6">
             <h2 className="text-2xl">
               <Link href={`/post/${post.slug}`}>{post.title}</Link>
@@ -27,7 +28,7 @@ export default async function Page() {
               Read More
             </Link>
           </div>
-        </article>
+        </PostCard>
       ))}
 
       <Pagination currentPage={1} totalPage={totalPage} />
