@@ -1,7 +1,6 @@
-import { getPostBySlug } from "@/lib/api";
-import { allPosts } from "@/lib/allPosts";
-import markdownToHtml from "@/lib/markdownToHtml";
-import Link from "next/link";
+import { allPosts } from '@/lib/allPosts';
+import markdownToHtml from '@/lib/markdownToHtml';
+import Link from 'next/link';
 type Params = Promise<{ slug: string }>;
 
 // この時点では各記事ごととなるので配列ではなく

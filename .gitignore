@@ -17,3 +17,5 @@ npm-debug.log*
 # Your custom ignore
 reserve/
 dev/
+
+hoge.txt
