@@ -16,14 +16,14 @@ export default async function Page() {
   return (
     <>
       {pagePosts.map((post) => (
-        <article className="post-card" key={post.slug}>
-          <div className="post-content">
-            <h2>
+        <article className="bg-white rounded-lg overflow-hidden shadow-[0_4px_6px_-1px_rgba(0,0,0,0.05)] mb-7.5 border-b border-(--border-color)" key={post.slug}>
+          <div className="p-6">
+            <h2 className="text-2xl">
               <Link href={`/post/${post.slug}`}>{post.title}</Link>
             </h2>
-            <p className="post-meta">Published on {post.date}</p>
-            <p className="post-excerpt">{truncateUnicode(post.content, 120)}</p>
-            <Link href={`/post/${post.slug}`} className="read-more">
+            <p className="text-sm text-[#64748b] mb-3.5">Published on {post.date}</p>
+            <p className="text-[#475569] mb-4">{truncateUnicode(post.content, 120)}</p>
+            <Link href={`/post/${post.slug}`} className="font-semibold">
               Read More
             </Link>
           </div>

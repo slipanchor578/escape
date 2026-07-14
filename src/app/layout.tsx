@@ -18,7 +18,7 @@ export default function RootLayout({
         <Header />
         {/* Main Container */}
         <Container>
-          <div className="max-w-[900px] mx-auto py-10">
+          <div className="max-w-225 mx-auto py-10">
             <main>{children}</main>
           </div>
         </Container>
