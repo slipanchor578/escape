@@ -7,7 +7,7 @@ export default async function Page() {
 
   allPosts.forEach((post) => {
     const d = new Date(post.date);
-    const ym = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}`;
+    const ym = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`;
 
     if (!groups[ym]) groups[ym] = [];
     groups[ym].push(post);
@@ -16,23 +16,25 @@ export default async function Page() {
   const sortedKeys = Object.keys(groups).sort().reverse();
 
   return (
-    <article className="bg-white rounded-lg 
-        overflow-hidden box-shadow-[0_4px_6px_-1px_rgba(0,0,0,0.05)] 
-        mb-7.5 border border-(--border-color)">
+    <article className="box-shadow-[0_4px_6px_-1px_rgba(0,0,0,0.05)] mb-7.5 overflow-hidden rounded-lg border border-(--border-color) bg-white">
       {/* .post-content */}
       <div className="p-6">
         {sortedKeys.map((ym) => {
-          const [year, month] = ym.split("-");
+          const [year, month] = ym.split('-');
           return (
             <section key={ym} className="mt-8">
-              <h3 className="text-xl mb-3 text-[#333]">
+              <h3 className="mb-3 text-xl text-[#333]">
                 {year}年{month}月
               </h3>
-              <ul className="flex flex-wrap list-none m-0 p-0 gap-x-3 gap-y-2">
+              <ul className="m-0 flex list-none flex-wrap gap-x-3 gap-y-2 p-0">
                 {groups[ym].map((post) => (
-                  <li className="my-1 mx-0" key={post.slug}>
-                    <Link className="p-0 bg-transparent rounded-none 
-                      font-normal text-lg text-black no-underline hover:underline" href={`/post/${post.slug}`}>{post.title}</Link>
+                  <li className="mx-0 my-1" key={post.slug}>
+                    <Link
+                      className="rounded-none bg-transparent p-0 text-lg font-normal text-black no-underline hover:underline"
+                      href={`/post/${post.slug}`}
+                    >
+                      {post.title}
+                    </Link>
                   </li>
                 ))}
               </ul>

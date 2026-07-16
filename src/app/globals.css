@@ -1,16 +1,16 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 /* 修正：none をダブルクォーテーションで囲みます */
-@source "none";
+@source 'none';
 
 /* 2. Tailwind を適用したい特定の path を指定 */
-@source "./page.tsx";
-@source "./layout.tsx";
-@source "./_components/**/*.{js,ts,jsx,tsx,mdx}";
-@source "./article/**/*.{js,ts,jsx,tsx,mdx}";
-@source "./page/**/*.{js,ts,jsx,tsx,mdx}";
-@source "./post/**/*.{js,ts,jsx,tsx,mdx}";
-@source "./tag/**/*.{js,ts,jsx,tsx,mdx}";
+@source './page.tsx';
+@source './layout.tsx';
+@source './_components/**/*.{js,ts,jsx,tsx,mdx}';
+@source './article/**/*.{js,ts,jsx,tsx,mdx}';
+@source './page/**/*.{js,ts,jsx,tsx,mdx}';
+@source './post/**/*.{js,ts,jsx,tsx,mdx}';
+@source './tag/**/*.{js,ts,jsx,tsx,mdx}';
 
 /* 3. ダークモードの追加設定 */
 @theme {

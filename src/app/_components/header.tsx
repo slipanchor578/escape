@@ -3,9 +3,9 @@ import Container from '@/components/container';
 
 export default function Header() {
   return (
-    <header className="bg-white border-b border-(--border-color) sticky top-0 z-100">
+    <header className="sticky top-0 z-100 border-b border-(--border-color) bg-white">
       <Container>
-        <div className="flex justify-between items-center h-17.5">
+        <div className="flex h-17.5 items-center justify-between">
           <Link href="/" className="text-2xl font-bold tracking-[-0.5px]">
             My<span className="text-(--primary-color)">Blog</span>
           </Link>

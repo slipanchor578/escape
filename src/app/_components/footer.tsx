@@ -2,8 +2,7 @@ import Container from '@/components/container';
 
 export default function Footer() {
   return (
-    <footer className="bg-white border-t border-(--border-color) 
-    py-7.5 text-center text-(--footer-color) text-sm">
+    <footer className="border-t border-(--border-color) bg-white py-7.5 text-center text-sm text-(--footer-color)">
       <Container>
         <p>&copy; 2026 MyBlog</p>
       </Container>

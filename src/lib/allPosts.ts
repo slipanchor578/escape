@@ -1,2 +1,2 @@
-import { getAllPosts } from "./api";
+import { getAllPosts } from './api';
 export const allPosts = await getAllPosts();

@@ -1,11 +1,11 @@
 // 事前にfront matter を含めたmdの形式をtypeで作っておく。
-import { Post } from "@/interfaces/post";
-import { readdir, readFile } from "fs/promises";
-import matter from "gray-matter";
-import { join } from "path";
+import { Post } from '@/interfaces/post';
+import { readdir, readFile } from 'fs/promises';
+import matter from 'gray-matter';
+import { join } from 'path';
 
 // . + _posts = /home/nakai288/prac/blog2/_posts
-const postsDirectory = join(process.cwd(), "_posts");
+const postsDirectory = join(process.cwd(), '_posts');
 
 // _posts内の記事のファイル名配列が返る。[ 'dynamic-routing.md', 'hello-world.md', 'preview.md' ]
 export async function getPostSlugs() {
@@ -14,11 +14,11 @@ export async function getPostSlugs() {
 
 export async function getPostBySlug(slug: string) {
   // ファイル名から.mdが取られる
-  const realSlug = slug.replace(/\.md$/, "");
+  const realSlug = slug.replace(/\.md$/, '');
   // /home/nakai288/prac/blog2/_posts/dynamic-routing.md こういうのができる
   const fullPath = join(postsDirectory, `${realSlug}.md`);
   // ファイルを文字列として読み込む。この時点ではまだ.md => html 化していない。「## Lorem Ipsum」みたいな感じでそのまま
-  const fileContents = await readFile(fullPath, "utf8");
+  const fileContents = await readFile(fullPath, 'utf8');
   // dataにはハッシュでfront matter の内容が入る
   // data.title = "Dynamic Routing and Static Generation" みたいな
   // data.author.name = "JJ Kasper" みたいにネストされる
@@ -36,7 +36,7 @@ export async function getAllPosts(): Promise<Post[]> {
   const slugs = await getPostSlugs();
   // ここで記事オブジェクトを生成
   const posts = await Promise.all(slugs.map((slug) => getPostBySlug(slug)));
-  return posts.sort((a, b) => a.date > b.date ? -1 : 1);
+  return posts.sort((a, b) => (a.date > b.date ? -1 : 1));
   // 日付の新しい記事順に並び替えた記事配列を返す
 }
 // 例えば
@@ -49,5 +49,5 @@ export async function getAllPosts(): Promise<Post[]> {
 export function truncateUnicode(str: string, maxLength: number) {
   const chars = [...str];
   if (chars.length <= maxLength) return str;
-  return chars.slice(0, maxLength).join("") + " ...";
+  return chars.slice(0, maxLength).join('') + ' ...';
 }
