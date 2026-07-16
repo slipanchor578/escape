@@ -5,7 +5,7 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-100 border-b border-(--border-color) bg-white">
       <Container>
-        <div className="flex h-17.5 items-center justify-between">
+        <div className="flex h-17.5 items-center justify-between max-md:h-auto max-md:flex-col max-md:gap-2.5 max-md:px-0 max-md:py-3.75">
           <Link href="/" className="text-2xl font-bold tracking-[-0.5px]">
             My<span className="text-(--primary-color)">Blog</span>
           </Link>
