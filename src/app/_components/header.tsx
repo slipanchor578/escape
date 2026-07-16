@@ -9,7 +9,7 @@ export default function Header() {
           <Link href="/" className="text-2xl font-bold tracking-[-0.5px]">
             My<span className="text-(--primary-color)">Blog</span>
           </Link>
-          <nav className="flex gap-2.5">
+          <nav className="flex gap-2.5 [&_a]:hover:underline">
             <Link href="/">Home</Link>
             <Link href="/article">Article</Link>
             <Link href="/tag">Tags</Link>

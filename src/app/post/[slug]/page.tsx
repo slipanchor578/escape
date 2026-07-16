@@ -18,7 +18,7 @@ export default async function Page({ params }: { params: Params }) {
         <div className="flex flex-wrap gap-2">
           {post.tags?.map((tag) => (
             <Link
-              className="mb-0 inline-block text-sm font-semibold text-(--primary-color) uppercase"
+              className="mb-0 inline-block text-sm font-semibold text-(--primary-color) capitalize hover:underline"
               key={tag}
               href={`/tag/${tag}`}
             >
@@ -37,7 +37,7 @@ export default async function Page({ params }: { params: Params }) {
       </header>
       {/* 記事本文 */}
       <div
-        className="post-body"
+        className="prose max-w-none"
         dangerouslySetInnerHTML={{ __html: content }}
       ></div>
     </article>

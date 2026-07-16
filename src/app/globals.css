@@ -1,5 +1,5 @@
 @import 'tailwindcss';
-
+@plugin '@tailwindcss/typography';
 /* 修正：none をダブルクォーテーションで囲みます */
 @source 'none';
 
