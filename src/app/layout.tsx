@@ -13,7 +13,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="ja">
-      <body>
+      <body className="bg-[#f5f1e4]">
         {/* Header */}
         <Header />
         {/* Main Container */}

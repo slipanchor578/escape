@@ -17,6 +17,6 @@
   --variant-dark: .dark &;
   --max-width: 1140px;
   --border-color: #e2e8f0;
-  --primary-color: #2563eb;
-  --footer-color: #64748b;
+  --header-color: #1e293b;
+  --subbody-color: #202020;
 }

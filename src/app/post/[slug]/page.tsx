@@ -11,14 +11,15 @@ export default async function Page({ params }: { params: Params }) {
   const content = await markdownToHtml(post.content || '');
 
   return (
-    <article className="mt-10 mb-15 rounded-none border-none bg-transparent p-0 max-md:p-6">
+    // <article className="mt-10 mb-15 rounded-none border-none bg-transparent p-0 max-md:p-6">
+    <article className="mx-auto mt-10 mb-15 w-full max-w-full rounded-none border-none bg-transparent p-0">
       {/* 記事のヘッダー情報 */}
       <header className="mb-8 border-b pb-0">
         {/* カテゴリ・タグ一覧 */}
         <div className="flex flex-wrap gap-2">
           {post.tags?.map((tag) => (
             <Link
-              className="mb-0 inline-block text-sm font-semibold text-(--primary-color) capitalize hover:underline"
+              className="mb-0 inline-block text-sm font-semibold text-orange-500 capitalize hover:underline"
               key={tag}
               href={`/tag/${tag}`}
             >
@@ -27,11 +28,11 @@ export default async function Page({ params }: { params: Params }) {
           ))}
         </div>
         {/* 記事タイトル */}
-        <h1 className="my-3 text-4xl leading-[1.3] font-bold text-[#1e293b] max-md:text-[26px]">
+        <h1 className="my-3 text-4xl leading-[1.3] font-bold text-(--header-color) max-md:text-[26px]">
           {post.title}
         </h1>
         {/* 投稿日等のメタ情報 */}
-        <p className="mb-3.5 text-[13px] text-[#64748b]">
+        <p className="mb-3.5 text-[13px] text-(--header-color)">
           Published on <time dateTime={post.date}>{post.date}</time>
         </p>
       </header>

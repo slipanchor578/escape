@@ -6,10 +6,7 @@ export default function PaginationLink({
   children,
 }: Readonly<{ href: string; children: React.ReactNode }>) {
   return (
-    <Link
-      href={href}
-      className="rounded-sm bg-[#f0f0f0] px-2.5 py-1 hover:text-(--primary-color)"
-    >
+    <Link href={href} className="rounded-sm px-2.5 py-1 hover:text-[#ea8355]">
       {children}
     </Link>
   );
